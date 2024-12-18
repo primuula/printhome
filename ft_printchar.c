@@ -6,25 +6,40 @@
 /*   By: safamran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:43:56 by safamran          #+#    #+#             */
-/*   Updated: 2024/12/10 16:43:57 by safamran         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:28:02 by safamran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void    ft_putchar(char c)
+int	ft_putchar(char c)
 {
-    write(1, &c , 1);
+	write (1, &c, 1);
+	return (1);
 }
 
-void    ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] != '\0')
-    {
-        ft_putchar(str[i]);
-    i++;
-    }
+	i = 0;
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return (i);
 }
+/*
+void    ft_char(char c)
+{
+    write(1, &c, 1);
+}
+
+int main()
+{
+    char *test = "marvose !";
+    ft_char(ft_putstr(test)+ '0');
+    ft_char(ft_putcha)
+return (0);
+}*/
