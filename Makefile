@@ -2,7 +2,7 @@
 NAME	= libftprintf.a
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
-SRCS	= ft_ptf.c ft_printchar.c ft_printn.c base16.c
+SRCS	= ft_ptf.c ft_printchar.c ft_printn.c base16.c itoa.c unitoa.c
 INC		= ft_printf.hcc
 OBJ		= $(SRCS:.c=.o)
 

@@ -20,15 +20,20 @@ int	ft_putchar(char c)
 
 int	ft_putstr(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
+	if (!str)
 	{
-		ft_putchar(str[i]);
-		i++;
+		write(1, "(null)", 6);
+		return (6);
 	}
-	return (i);
+	int	a;
+
+	a = 0;
+	while (str[a] != '\0')
+	{
+		ft_putchar(str[a]);
+		a++;
+	}
+	return (a);
 }
 /*
 void    ft_char(char c)

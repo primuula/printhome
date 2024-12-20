@@ -13,47 +13,88 @@
 #include <unistd.h>
 #include "ft_printf.h"
 
-void	ft_affc(char c)
+int	ft_affc(char c)
 {
 	write (1, &c, 1);
+	return (1);
 }
 
-int	ft_puthexaup(int nb)
+int	ft_puthexaup(unsigned int nb)
 {
-	int		count;
+	int i = 0;
 	char	*lett;
 
-	count = 0;
-	*lett = "0123456789ABCDEF";
-	if (nb >= 16)
+	lett = "0123456789ABCDEF";
+	if (nb == 0)
+		return (ft_affc('0'));
+	if (nb < 0)
 	{
-		ft_puthexaup(nb / 16);
-		count ++;
+		nb = -nb;
+		ft_affc('-');
+		i++;
 	}
-	if ((nb % 16) != 0)
-		count ++;
+	if (nb >= 16)
+		i+= ft_puthexaup(nb / 16);
 	ft_affc(lett[nb % 16]);
-	return (count);
+	i++;
+	return (i);
 }
 
-int	ft_puthexax(int nb)
+int	ft_puthexax(unsigned int nb)
 {
-	int	count;
+	int i = 0;
 	char	*lett;
 
-	count = 0;
-	*lett = "0123456789abcdef";
-	if (nb >= 16)
+	lett = "0123456789abcdef";
+	if (nb == 0)
+		return (ft_affc('0'));
+	if (nb < 0)
 	{
-		ft_puthexax(nb / 16);
-		//count++;
+		nb = -nb;
+		ft_affc('-');
+		i++;
 	}
-	if ((nb % 16) != 0)
-		count++;
+	if (nb >= 16)
+		i+= ft_puthexax(nb / 16);
 	ft_affc(lett[nb % 16]);
-	return (count);
+	i++;
+	return (i);
+}
+
+int		exeptr(unsigned long long ptr)
+{
+	int i;
+	i = 0;
+	if (!ptr)
+		return (write(1, "(nil)", 5));
+	else
+	{
+		i += write(1, "0x", 2);
+		i+= voidptr(ptr);
+	}
+	return(i);
+}
+int		voidptr(unsigned long long ptr)
+{
+	int		i;
+	char	*lett;
+	
+	i = 0;
+	lett = "0123456789abcdef";
+	if (ptr >= 16)
+		i+= voidptr(ptr / 16);
+	ft_affc(lett[ptr % 16]);
+	i++;
+	return (i);
 }
 /*
+int	voidpointeur(void * str)
+{
+	
+
+	return (i);
+}
+
 int main()
 {     ft_puthexax(65772);
       ft_affc('\n');
