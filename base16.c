@@ -6,7 +6,7 @@
 /*   By: safamran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 12:37:18 by safamran          #+#    #+#             */
-/*   Updated: 2024/12/18 16:37:21 by safamran         ###   ########.fr       */
+/*   Updated: 2024/12/21 12:59:58 by safamran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int	ft_affc(char c)
 
 int	ft_puthexaup(unsigned int nb)
 {
-	int i = 0;
+	int		i;
 	char	*lett;
 
+	i = 0;
 	lett = "0123456789ABCDEF";
 	if (nb == 0)
 		return (ft_affc('0'));
@@ -34,7 +35,7 @@ int	ft_puthexaup(unsigned int nb)
 		i++;
 	}
 	if (nb >= 16)
-		i+= ft_puthexaup(nb / 16);
+		i += ft_puthexaup(nb / 16);
 	ft_affc(lett[nb % 16]);
 	i++;
 	return (i);
@@ -42,9 +43,10 @@ int	ft_puthexaup(unsigned int nb)
 
 int	ft_puthexax(unsigned int nb)
 {
-	int i = 0;
+	int		i;
 	char	*lett;
 
+	i = 0;
 	lett = "0123456789abcdef";
 	if (nb == 0)
 		return (ft_affc('0'));
@@ -55,34 +57,36 @@ int	ft_puthexax(unsigned int nb)
 		i++;
 	}
 	if (nb >= 16)
-		i+= ft_puthexax(nb / 16);
+		i += ft_puthexax(nb / 16);
 	ft_affc(lett[nb % 16]);
 	i++;
 	return (i);
 }
 
-int		exeptr(unsigned long long ptr)
+int	exeptr(unsigned long long ptr)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	if (!ptr)
 		return (write(1, "(nil)", 5));
 	else
 	{
 		i += write(1, "0x", 2);
-		i+= voidptr(ptr);
+		i += voidptr(ptr);
 	}
-	return(i);
+	return (i);
 }
-int		voidptr(unsigned long long ptr)
+
+int	voidptr(unsigned long long ptr)
 {
 	int		i;
 	char	*lett;
-	
+
 	i = 0;
 	lett = "0123456789abcdef";
 	if (ptr >= 16)
-		i+= voidptr(ptr / 16);
+		i += voidptr(ptr / 16);
 	ft_affc(lett[ptr % 16]);
 	i++;
 	return (i);

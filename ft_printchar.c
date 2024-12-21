@@ -6,7 +6,7 @@
 /*   By: safamran <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 16:43:56 by safamran          #+#    #+#             */
-/*   Updated: 2024/12/18 16:28:02 by safamran         ###   ########.fr       */
+/*   Updated: 2024/12/21 13:00:45 by safamran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	ft_putchar(char c)
 
 int	ft_putstr(char *str)
 {
+	int	a;
+
+	a = 0;
 	if (!str)
 	{
 		write(1, "(null)", 6);
 		return (6);
 	}
-	int	a;
-
-	a = 0;
 	while (str[a] != '\0')
 	{
 		ft_putchar(str[a]);
